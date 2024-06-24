@@ -1,9 +1,5 @@
 import UIKit
 
-extension Notification.Name {
-    static let habitsDidChange = Notification.Name("habitsDidChange")
-}
-
 class HabitViewController: UIViewController {
 
     var habitToEdit: Habit?
@@ -85,7 +81,9 @@ class HabitViewController: UIViewController {
     private func setupNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Отменить", style: .plain, target: self, action: #selector(cancelButtonTapped))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: habitToEdit == nil ? "Создать" : "Сохранить", style: .done, target: self, action: #selector(saveButtonTapped))
+        
     }
+    
 
     private func setupViews() {
         view.addSubview(habitNameLabel)
@@ -125,12 +123,11 @@ class HabitViewController: UIViewController {
             timeLabel.topAnchor.constraint(equalTo: colorLabel.bottomAnchor, constant: 20),
             timeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
-            timeText.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 5),
+            timeText.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 20),
             timeText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
-            timePicker.topAnchor.constraint(equalTo: timeText.bottomAnchor, constant: 5),
-            timePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            timePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            timePicker.centerYAnchor.constraint(equalTo: timeText.centerYAnchor),
+            timePicker.leadingAnchor.constraint(equalTo: timeText.trailingAnchor, constant: 10),
         ])
         
         if habitToEdit != nil {
@@ -144,12 +141,14 @@ class HabitViewController: UIViewController {
     private func setupEditView(with habit: Habit) {
         habitNameTextField.text = habit.name
         colorCircle.backgroundColor = habit.color
+        colorCircle.layer.borderColor = habit.color.cgColor
         timePicker.date = habit.date
     }
 
     @objc private func colorCircleTapped() {
         let colorPicker = UIColorPickerViewController()
         colorPicker.selectedColor = colorCircle.backgroundColor ?? .systemBlue
+        
         colorPicker.delegate = self
         colorPicker.supportsAlpha = false
         present(colorPicker, animated: true, completion: nil)
@@ -160,7 +159,12 @@ class HabitViewController: UIViewController {
     }
 
     @objc private func saveButtonTapped() {
-        guard let name = habitNameTextField.text, !name.isEmpty else { return }
+        guard let name = habitNameTextField.text, !name.isEmpty else {
+            let alert = UIAlertController(title: "Ошибка", message: "Название привычки не может быть пустым", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
+        }
 
         let newHabit = Habit(name: name, date: timePicker.date, color: colorCircle.backgroundColor ?? .systemBlue)
         let store = HabitsStore.shared
@@ -171,7 +175,7 @@ class HabitViewController: UIViewController {
             store.habits.append(newHabit)
         }
 
-        NotificationCenter.default.post(name: .habitsDidChange, object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("habitsChanged"), object: nil)
         dismiss(animated: true, completion: nil)
     }
     
@@ -184,7 +188,7 @@ class HabitViewController: UIViewController {
             if let index = store.habits.firstIndex(of: habitToEdit) {
                 store.habits.remove(at: index)
             }
-            NotificationCenter.default.post(name: .habitsDidChange, object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name("habitsChanged"), object: nil)
             self.dismiss(animated: true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)

@@ -1,8 +1,8 @@
 import UIKit
 
-class HabitDetailsViewController: UIViewController {
+final class HabitDetailsViewController: UIViewController {
 
-    var habit: Habit
+    private var habit: Habit
 
     init(habit: Habit) {
         self.habit = habit

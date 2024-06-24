@@ -19,6 +19,7 @@
 		A28A9A9E2C198F10005CC8DD /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9A9D2C198F10005CC8DD /* HabitCollectionViewCell.swift */; };
 		A28A9AA02C1DD74B005CC8DD /* ProgressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9A9F2C1DD74B005CC8DD /* ProgressCollectionViewCell.swift */; };
 		A2AC789F2C1ED859001790A6 /* HabitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AC789E2C1ED859001790A6 /* HabitDetailsViewController.swift */; };
+		A2AE5BEA2C25652F009116C7 /* StatusCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AE5BE92C25652F009116C7 /* StatusCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A28A9A9D2C198F10005CC8DD /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
 		A28A9A9F2C1DD74B005CC8DD /* ProgressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2AC789E2C1ED859001790A6 /* HabitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewController.swift; sourceTree = "<group>"; };
+		A2AE5BE92C25652F009116C7 /* StatusCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				A28A9A9D2C198F10005CC8DD /* HabitCollectionViewCell.swift */,
 				A28A9A9F2C1DD74B005CC8DD /* ProgressCollectionViewCell.swift */,
 				A2AC789E2C1ED859001790A6 /* HabitDetailsViewController.swift */,
+				A2AE5BE92C25652F009116C7 /* StatusCollectionViewCell.swift */,
 			);
 			path = MyHabits;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				A28A9A9C2C198AFA005CC8DD /* HabitViewController.swift in Sources */,
 				A252D50A2C1344A6005A8105 /* AppDelegate.swift in Sources */,
 				A252D5202C134D8A005A8105 /* HabitsViewController.swift in Sources */,
+				A2AE5BEA2C25652F009116C7 /* StatusCollectionViewCell.swift in Sources */,
 				A28A9AA02C1DD74B005CC8DD /* ProgressCollectionViewCell.swift in Sources */,
 				A252D5222C134DE6005A8105 /* InfoViewController.swift in Sources */,
 				A252D50C2C1344A6005A8105 /* SceneDelegate.swift in Sources */,

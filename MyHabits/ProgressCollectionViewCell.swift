@@ -15,7 +15,7 @@ class ProgressCollectionViewCell: UICollectionViewCell {
     
     private let progressBar: UIProgressView = {
         let progressView = UIProgressView(progressViewStyle: .default)
-        progressView.trackTintColor = .lightGray
+        progressView.trackTintColor = .systemGray6
         progressView.progressTintColor = .systemPurple
         progressView.layer.cornerRadius = 6
         progressView.clipsToBounds = true
@@ -64,8 +64,6 @@ class ProgressCollectionViewCell: UICollectionViewCell {
             progressBar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             progressBar.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             progressBar.heightAnchor.constraint(equalToConstant: 10)
-            
-
         ])
     }
     
